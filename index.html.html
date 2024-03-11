@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Playlist Video</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+  }
+  .container {
+    width: 100%;
+    max-width: 800px;
+    margin: auto;
+    overflow: hidden;
+  }
+  .video {
+    background-color: #ddd;
+    margin: 15px 0;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  .video-title {
+    margin: 0;
+    padding: 0;
+    font-size: 18px; /* Ridotto per i dispositivi mobili */
+  }
+  .video-frame {
+    width: 100%;
+    max-width: 500px; /* Larghezza massima per i video */
+    height: auto; /* Si adatta alla larghezza */
+    aspect-ratio: 16 / 9;
+    margin: auto; /* Centra il video */
+  }
+  @media (min-width: 600px) {
+    .video-title {
+      font-size: 24px; /* Dimensione maggiore per schermi più grandi */
+    }
+    .video-frame {
+      max-width: 700px; /* Larghezza massima più grande per schermi più grandi */
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <!-- Video 1 -->
+  <div class="video">
+    <h2 class="video-title">Titolo Personalizzato del Video 1</h2>
+    <iframe class="video-frame" src="https://www.youtube.com/embed/VIDEO_ID_1" frameborder="0" allowfullscreen></iframe>
+  </div>
+  
+  <!-- Video 2 -->
+  <div class="video">
+    <h2 class="video-title">Titolo Personalizzato del Video 2</h2>
+    <iframe class="video-frame" src="https://www.youtube.com/embed/VIDEO_ID_2" frameborder="0" allowfullscreen></iframe>
+  </div>
+  
+  <!-- Aggiungi altri video qui -->
+</div>
+
+</body>
+</html>
