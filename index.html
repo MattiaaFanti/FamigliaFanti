@@ -3,45 +3,45 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Playlist Video</title>
+<title>Playlist Video Minimalista</title>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap" rel="stylesheet">
 <style>
   body {
-    font-family: Arial, sans-serif;
+    font-family: 'Open Sans', sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
   }
   .container {
     width: 100%;
-    max-width: 800px;
+    max-width: 640px;
     margin: auto;
     overflow: hidden;
   }
   .video {
-    background-color: #ddd;
+    background-color: #fff;
     margin: 15px 0;
     padding: 20px;
     box-sizing: border-box;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    text-align: center;
   }
   .video-title {
     margin: 0;
     padding: 0;
-    font-size: 18px; /* Ridotto per i dispositivi mobili */
+    font-size: 18px;
+    font-weight: 400;
+    color: #333;
   }
   .video-frame {
     width: 100%;
-    max-width: 500px; /* Larghezza massima per i video */
-    height: auto; /* Si adatta alla larghezza */
+    height: auto;
     aspect-ratio: 16 / 9;
-    margin: auto; /* Centra il video */
-  }
-  @media (min-width: 600px) {
-    .video-title {
-      font-size: 24px; /* Dimensione maggiore per schermi più grandi */
-    }
-    .video-frame {
-      max-width: 700px; /* Larghezza massima più grande per schermi più grandi */
-    }
+    margin-top: 10px;
   }
 </style>
 </head>
@@ -53,9 +53,9 @@
     <h2 class="video-title">Decesso Fra Nazareno nella chiesa Sant'Ignazio - Catedrale Cimitero di Bonaria - Traslazione a Pula - Consacrazione della chiesa is Molas Pula - Prima Via Crucis - Chiesa in Costruzione</h2>
     <iframe class="video-frame" src="https://www.youtube.com/embed/n3CEdEGrTug?si=gn3OpKbltVJhhCZR" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
   </div>
-    <!-- Video 2 -->
+  <!-- Video 2 -->
   <div class="video">
-    <h2 class="video-title">Decesso Fra Nazareno - Funerali nella chiesa di Fra Ignazio - Catedrale - Cimitero di Bonaria - Traslazione a Pula - Consacrazione della chiesa Is Molas Pula - Prima Via Crucis nella chiesa - Ripresa chiesa in costruzione</h2>
+    <h2 class="video-title">Decesso Fra Nazareno nella chiesa Sant'Ignazio - Catedrale Cimitero di Bonaria - Traslazione a Pula - Consacrazione della chiesa is Molas Pula - Prima Via Crucis - Chiesa in Costruzione</h2>
     <iframe class="video-frame" src="https://www.youtube.com/embed/n3CEdEGrTug?si=gn3OpKbltVJhhCZR" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
   </div>
   
