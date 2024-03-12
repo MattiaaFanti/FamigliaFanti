@@ -22,7 +22,7 @@
     margin: auto;
     overflow: hidden;
   }
-  .video {
+  .video-panel {
     background-color: #fff;
     margin: 15px 0;
     padding: 20px;
@@ -36,6 +36,7 @@
     font-size: 18px;
     font-weight: 400;
     color: #333;
+    cursor: pointer;
   }
   .video-frame {
     display: none; /* Nascondi tutti i frame dei video all'inizio */
@@ -49,19 +50,19 @@
 <body>
 
 <div class="container">
-    <div class="video">
+    <div class="video-panel" id="videoPanel1">
         <div class="video-title" onclick="toggleVideo('video1')">Titolo Video 1</div>
         <div class="video-frame" id="video1">
             <!-- Codice iframe per incorporare il video YouTube -->
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/VIDEO_ID_1" frameborder="0" allowfullscreen></iframe>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/KmSYOi_eoxc" frameborder="0" allowfullscreen></iframe>
         </div>
     </div>
 
-    <div class="video">
+    <div class="video-panel" id="videoPanel2">
         <div class="video-title" onclick="toggleVideo('video2')">Titolo Video 2</div>
         <div class="video-frame" id="video2">
             <!-- Codice iframe per incorporare il video YouTube -->
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/VIDEO_ID_2" frameborder="0" allowfullscreen></iframe>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/HNw_yj11otg" frameborder="0" allowfullscreen></iframe>
         </div>
     </div>
 
@@ -76,12 +77,16 @@ function toggleVideo(videoId) {
     if (lastVideoId !== null && lastVideoId !== videoId) {
         var lastVideoFrame = document.getElementById(lastVideoId);
         lastVideoFrame.style.display = "none";
+        document.getElementById("videoPanel" + lastVideoId.substr(-1)).style.maxHeight = "initial"; // Riporta la dimensione del pannello alla dimensione iniziale
     }
 
+    var videoPanel = document.getElementById("videoPanel" + videoId.substr(-1));
     if (videoFrame.style.display === "block") {
         videoFrame.style.display = "none";
+        videoPanel.style.maxHeight = "initial"; // Riporta la dimensione del pannello alla dimensione iniziale
     } else {
         videoFrame.style.display = "block";
+        videoPanel.style.maxHeight = videoPanel.scrollHeight + "px"; // Espandi il pannello per mostrare il frame del video
     }
     
     lastVideoId = videoId;
