@@ -91,27 +91,21 @@ function onYouTubeIframeAPIReady() {
 }
 
 function toggleVideo(videoId) {
-    for (var playerId in players) {
-        if (playerId !== videoId && players[playerId].getPlayerState() === YT.PlayerState.PLAYING) {
-            players[playerId].stopVideo();
-        }
-    }
-
     var videoFrame = document.getElementById(videoId);
     var videoPanel = document.getElementById("videoPanel" + videoId.substr(-1));
-    if (lastVideoId !== null && lastVideoId !== videoId) {
-        var lastVideoFrame = document.getElementById(lastVideoId);
-        lastVideoFrame.style.display = "none";
+    
+    if (lastVideoId && lastVideoId !== videoId) {
         var lastVideoPanel = document.getElementById("videoPanel" + lastVideoId.substr(-1));
-        lastVideoPanel.style.maxHeight = "initial"; // Riporta la dimensione del pannello alla dimensione iniziale
+        lastVideoPanel.style.maxHeight = "initial";
+        players[lastVideoId].stopVideo();
     }
 
     if (videoFrame.style.display === "block") {
         videoFrame.style.display = "none";
-        videoPanel.style.maxHeight = "initial"; // Riporta la dimensione del pannello alla dimensione iniziale
+        videoPanel.style.maxHeight = "initial";
     } else {
         videoFrame.style.display = "block";
-        videoPanel.style.maxHeight = videoPanel.scrollHeight + "px"; // Espandi il pannello per mostrare il frame del video
+        videoPanel.style.maxHeight = videoPanel.scrollHeight + "px";
     }
     
     lastVideoId = videoId;
