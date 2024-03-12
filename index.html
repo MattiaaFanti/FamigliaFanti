@@ -70,6 +70,7 @@
 <script src="https://www.youtube.com/iframe_api"></script>
 <script>
 var players = {};
+var lastVideoId = null;
 
 function onYouTubeIframeAPIReady() {
     players['video1'] = new YT.Player('player1', {
@@ -98,6 +99,13 @@ function toggleVideo(videoId) {
 
     var videoFrame = document.getElementById(videoId);
     var videoPanel = document.getElementById("videoPanel" + videoId.substr(-1));
+    if (lastVideoId !== null && lastVideoId !== videoId) {
+        var lastVideoFrame = document.getElementById(lastVideoId);
+        lastVideoFrame.style.display = "none";
+        var lastVideoPanel = document.getElementById("videoPanel" + lastVideoId.substr(-1));
+        lastVideoPanel.style.maxHeight = "initial"; // Riporta la dimensione del pannello alla dimensione iniziale
+    }
+
     if (videoFrame.style.display === "block") {
         videoFrame.style.display = "none";
         videoPanel.style.maxHeight = "initial"; // Riporta la dimensione del pannello alla dimensione iniziale
@@ -105,6 +113,8 @@ function toggleVideo(videoId) {
         videoFrame.style.display = "block";
         videoPanel.style.maxHeight = videoPanel.scrollHeight + "px"; // Espandi il pannello per mostrare il frame del video
     }
+    
+    lastVideoId = videoId;
 }
 </script>
 
