@@ -41,9 +41,8 @@
   }
   .video-frame {
     display: none;
-    width: calc(100% + 30px); /* Aggiungi 15px di margine sia a sinistra che a destra */
+    width: 100%;
     height: auto;
-    margin: 0 -15px; /* Compensa il margine del contenitore */
     margin-top: 10px;
   }
 </style>
@@ -54,14 +53,14 @@
     <div class="video-panel" id="videoPanel1">
         <div class="video-title" onclick="toggleVideo('video1')">Titolo Video 1</div>
         <div class="video-frame" id="video1">
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/KmSYOi_eoxc" frameborder="0" allowfullscreen></iframe>
+            <iframe width="100%" height="315" src="https://www.youtube.com/embed/KmSYOi_eoxc" frameborder="0" allowfullscreen></iframe>
         </div>
     </div>
 
     <div class="video-panel" id="videoPanel2">
         <div class="video-title" onclick="toggleVideo('video2')">Titolo Video 2</div>
         <div class="video-frame" id="video2">
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/HNw_yj11otg" frameborder="0" allowfullscreen></iframe>
+            <iframe width="100%" height="315" src="https://www.youtube.com/embed/HNw_yj11otg" frameborder="0" allowfullscreen></iframe>
         </div>
     </div>
 
