@@ -53,38 +53,37 @@
     <div class="video-panel" id="videoPanel1">
         <div class="video-title" onclick="toggleVideo('video1')">Titolo Video 1</div>
         <div class="video-frame" id="video1">
-            <iframe width="100%" height="315" src="https://www.youtube.com/embed/KmSYOi_eoxc" frameborder="0" allowfullscreen></iframe>
+            <iframe class="yt_player_iframe" width="100%" height="315" src="https://www.youtube.com/embed/KmSYOi_eoxc?enablejsapi=1&version=3&playerapiid=ytplayer" frameborder="0" allowfullscreen></iframe>
         </div>
     </div>
 
     <div class="video-panel" id="videoPanel2">
         <div class="video-title" onclick="toggleVideo('video2')">Titolo Video 2</div>
         <div class="video-frame" id="video2">
-            <iframe width="100%" height="315" src="https://www.youtube.com/embed/HNw_yj11otg" frameborder="0" allowfullscreen></iframe>
+            <iframe class="yt_player_iframe" width="100%" height="315" src="https://www.youtube.com/embed/HNw_yj11otg?enablejsapi=1&version=3&playerapiid=ytplayer" frameborder="0" allowfullscreen></iframe>
         </div>
     </div>
 
     <!-- Aggiungi altri titoli e frame per gli altri video -->
 </div>
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-var lastVideoId = null;
-
 function toggleVideo(videoId) {
     var videoFrame = document.getElementById(videoId);
     if (lastVideoId !== null && lastVideoId !== videoId) {
         var lastVideoFrame = document.getElementById(lastVideoId);
         lastVideoFrame.style.display = "none";
+        var lastFrameParent = lastVideoFrame.parentElement;
+        lastFrameParent.removeChild(lastVideoFrame); // Rimuovi completamente l'elemento iframe
         document.getElementById("videoPanel" + lastVideoId.substr(-1)).style.maxHeight = "initial"; // Riporta la dimensione del pannello alla dimensione iniziale
-        
-        // Interrompi il video corrente
-        var lastVideo = lastVideoFrame.querySelector('iframe');
-        lastVideo.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
     }
 
     var videoPanel = document.getElementById("videoPanel" + videoId.substr(-1));
     if (videoFrame.style.display === "block") {
         videoFrame.style.display = "none";
+        var frameParent = videoFrame.parentElement;
+        frameParent.removeChild(videoFrame); // Rimuovi completamente l'elemento iframe
         videoPanel.style.maxHeight = "initial"; // Riporta la dimensione del pannello alla dimensione iniziale
     } else {
         videoFrame.style.display = "block";
@@ -93,6 +92,14 @@ function toggleVideo(videoId) {
     
     lastVideoId = videoId;
 }
+
+$(document).ready(function() {
+    $('.video-panel').on('click', function() {
+        $('.yt_player_iframe').each(function(){
+            this.contentWindow.postMessage('{"event":"command","func":"stopVideo","args":""}', '*');
+        });
+    });
+});
 </script>
 
 </body>
