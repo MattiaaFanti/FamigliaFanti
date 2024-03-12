@@ -76,6 +76,10 @@ function toggleVideo(videoId) {
         var lastVideoFrame = document.getElementById(lastVideoId);
         lastVideoFrame.style.display = "none";
         document.getElementById("videoPanel" + lastVideoId.substr(-1)).style.maxHeight = "initial"; // Riporta la dimensione del pannello alla dimensione iniziale
+        
+        // Interrompi il video corrente
+        var lastVideo = lastVideoFrame.querySelector('iframe');
+        lastVideo.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
     }
 
     var videoPanel = document.getElementById("videoPanel" + videoId.substr(-1));
