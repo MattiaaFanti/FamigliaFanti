@@ -14,7 +14,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
   }
   .container {
     width: 100%;
@@ -38,11 +38,11 @@
     color: #333;
   }
   .video-frame {
+    display: none; /* Nascondi tutti i frame dei video all'inizio */
     width: 100%;
+    max-width: 100%; /* Adattamento per dispositivi mobili */
     height: auto;
-    aspect-ratio: 16 / 9;
     margin-top: 10px;
-    display: none; /* Assicura che tutti i frame siano inizialmente nascosti */
   }
 </style>
 </head>
@@ -69,15 +69,22 @@
 </div>
 
 <script>
+var lastVideoId = null;
+
 function toggleVideo(videoId) {
     var videoFrame = document.getElementById(videoId);
-    // Nasconde tutti i frame dei video prima di mostrare quello selezionato
-    var allFrames = document.querySelectorAll('.video-frame');
-    allFrames.forEach(function(frame) {
-        frame.style.display = 'none';
-    });
-    // Mostra il frame del video selezionato
-    videoFrame.style.display = (videoFrame.style.display === 'block') ? 'none' : 'block';
+    if (lastVideoId !== null && lastVideoId !== videoId) {
+        var lastVideoFrame = document.getElementById(lastVideoId);
+        lastVideoFrame.style.display = "none";
+    }
+
+    if (videoFrame.style.display === "block") {
+        videoFrame.style.display = "none";
+    } else {
+        videoFrame.style.display = "block";
+    }
+    
+    lastVideoId = videoId;
 }
 </script>
 
