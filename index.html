@@ -71,6 +71,7 @@
 <script>
 var players = {};
 var lastVideoId = null;
+var lastPanelId = null;
 
 function onYouTubeIframeAPIReady() {
     players['video1'] = new YT.Player('player1', {
@@ -94,21 +95,26 @@ function toggleVideo(videoId) {
     var videoFrame = document.getElementById(videoId);
     var videoPanel = document.getElementById("videoPanel" + videoId.substr(-1));
     
-    if (lastVideoId && lastVideoId !== videoId) {
-        var lastVideoPanel = document.getElementById("videoPanel" + lastVideoId.substr(-1));
-        lastVideoPanel.style.maxHeight = "initial";
-        players[lastVideoId].stopVideo();
+    if (lastPanelId !== null && lastPanelId !== "videoPanel" + videoId.substr(-1)) {
+        var lastVideoFrame = document.getElementById(lastVideoId);
+        var lastVideoPanel = document.getElementById(lastPanelId);
+        
+        lastVideoFrame.style.display = "none";
+        lastVideoPanel.style.maxHeight = "initial"; // Chiudi il pannello precedente
+        players[lastVideoId].stopVideo(); // Interrompi la riproduzione del video precedente
     }
 
     if (videoFrame.style.display === "block") {
         videoFrame.style.display = "none";
-        videoPanel.style.maxHeight = "initial";
+        videoPanel.style.maxHeight = "initial"; // Chiudi il pannello corrente
+        players[videoId].stopVideo(); // Interrompi la riproduzione del video corrente
     } else {
         videoFrame.style.display = "block";
-        videoPanel.style.maxHeight = videoPanel.scrollHeight + "px";
+        videoPanel.style.maxHeight = videoPanel.scrollHeight + "px"; // Espandi il pannello per mostrare il frame del video
     }
     
     lastVideoId = videoId;
+    lastPanelId = "videoPanel" + videoId.substr(-1);
 }
 </script>
 
