@@ -21,14 +21,15 @@
     max-width: 640px;
     margin: auto;
     overflow: hidden;
+    padding: 0 15px; /* Aggiungi padding al contenitore */
   }
   .video-panel {
     background-color: #fff;
-    margin: 15px 0;
-    padding: 20px;
+    padding: 20px; /* Aggiungi padding ai pannelli video */
     box-sizing: border-box;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     text-align: center;
+    margin-bottom: 15px; /* Aggiungi margine inferiore per separare i pannelli */
   }
   .video-title {
     margin: 0;
@@ -39,9 +40,9 @@
     cursor: pointer;
   }
   .video-frame {
-    display: none; /* Nascondi tutti i frame dei video all'inizio */
+    display: none;
     width: 100%;
-    max-width: 100%; /* Adattamento per dispositivi mobili */
+    max-width: 100%;
     height: auto;
     margin-top: 10px;
   }
@@ -53,7 +54,6 @@
     <div class="video-panel" id="videoPanel1">
         <div class="video-title" onclick="toggleVideo('video1')">Titolo Video 1</div>
         <div class="video-frame" id="video1">
-            <!-- Codice iframe per incorporare il video YouTube -->
             <iframe width="560" height="315" src="https://www.youtube.com/embed/KmSYOi_eoxc" frameborder="0" allowfullscreen></iframe>
         </div>
     </div>
@@ -61,7 +61,6 @@
     <div class="video-panel" id="videoPanel2">
         <div class="video-title" onclick="toggleVideo('video2')">Titolo Video 2</div>
         <div class="video-frame" id="video2">
-            <!-- Codice iframe per incorporare il video YouTube -->
             <iframe width="560" height="315" src="https://www.youtube.com/embed/HNw_yj11otg" frameborder="0" allowfullscreen></iframe>
         </div>
     </div>
